@@ -21,15 +21,15 @@ public class Project_Ramy_Cheaib
       Policy p = new Policy(policyNumber);
       
       System.out.println("Please enter the Provider Name: ");
-      providerName = keyboard.next(); 
+      providerName = keyboard.next();
+      providerName = keyboard.nextLine(); 
       p.setProviderName(providerName);
       
       System.out.println("Please enter the Policyholder’s First Name: ");
       firstName = keyboard.next();
-      firstName = keyboard.next();
       p.setFirstName(firstName);
       
-      System.out.println("Please enter the Policyholder’s Last Name: ");
+      System.out.println("Please enter the Policyholder’s Last Name: ");  
       lastName = keyboard.next();
       p.setLastName(lastName);
       
@@ -37,30 +37,45 @@ public class Project_Ramy_Cheaib
       age = keyboard.nextInt();
       p.setAge(age);
       
-      System.out.println("Please enter the Policyholder’s Smoking Status (smoker/non-smoker)");
+      System.out.println("Please enter the Policyholder’s Smoking Status (smoker/non-smoker): ");
       smokingStatus = keyboard.next();
-      p.setSmokingStatus(smokingStatus);
+      while(smokingStatus != "smoker" || smokingStatus != "non-smoker") // while / if statement to make sure they enter the right string
       
-      System.out.println("Please enter the Policyholder’s Height (in inches)");
+      if(smokingStatus == "smoker" )
+      {
+         p.setSmokingStatus("smoker");
+      }
+      else if(smokingStatus == "non-smoker")
+      {
+         p.setSmokingStatus("non-smoker");
+      }
+      else
+      {
+         System.out.println("Please enter smoker or non-smoker");
+         smokingStatus = keyboard.next();
+      }
+      
+      
+      System.out.println("Please enter the Policyholder’s Height (in inches): ");
       height = keyboard.nextInt();
       p.setHeight(height);
       
-      System.out.println("Please enter the Policyholder’s Weight (in pounds):");
+      System.out.println("Please enter the Policyholder’s Weight (in pounds): ");
       weight = keyboard.nextDouble();
       p.setWeight(weight);
       
       
-     // getters 
-     System.out.println("Policy Number" + policyNumber);
-     System.out.println("Provider Name" + p.getProviderName());  
+     // getters and display settings
+     System.out.println("Policy Number: " + policyNumber);
+     System.out.println("Provider Name:  " + p.getProviderName());  
      System.out.println("Policyholder’s First Name: " + p.getFirstName());
      System.out.println("Policyholder’s Last Name: " + p.getLastName());
      System.out.println("Policyholder’s Age: " + p.getAge());
      System.out.println("Policyholder’s Smoking Status: " + p.getSmokingStatus());
-     System.out.println("Policyholder’s Height: " + p.getHeight());
-     System.out.println("Policyholder’s Weight: " + p.getWeight());    
-     System.out.println("Policyholder's BMI: " + p.getBMI());
-     System.out.println("Policy Price: " + p.getInsurancePrice());
+     System.out.printf("Policyholder’s Height: %d.0\n " , p.getHeight());
+     System.out.printf("Policyholder’s Weight: %.01f\n " , p.getWeight());    
+     System.out.printf("Policyholder's BMI: %,.02f\n " , p.getBMI());
+     System.out.printf("Policy Price: $%,.02f\n " , p.getInsurancePrice());
      
 
    }

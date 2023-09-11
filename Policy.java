@@ -113,10 +113,11 @@ public class Policy
       {
          totalPrice = baseFee + 100;
       }
-      else
-      {
+      else     
+       {
          totalPrice = baseFee;
       }
+     
       if(bmi > 35)
       {
          additional = (bmi - 35) * 20;
