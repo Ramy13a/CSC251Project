@@ -6,8 +6,8 @@ public class Policy
    private String lastName;
    private int age;
    private String smokingStatus;
-   private double height;
-   private double weight;
+   private int height;
+   private int weight;
 
    //constructors
    public Policy()
@@ -22,7 +22,7 @@ public class Policy
       weight = 0;
    }
    
-   public Policy(String pNumber, String pName, String fName, String lName,int a, String sStatus, double h, double w)
+   public Policy(String pNumber, String pName, String fName, String lName,int a, String sStatus, int h, int w)
    {
       policyNumber = pNumber;
       providerName = pName;
@@ -66,12 +66,12 @@ public class Policy
       smokingStatus = sStatus;
    }
    // @param h is the Height of the provider
-   public void setHeight(double h)
+   public void setHeight(int h)
    {
       height = h;
    }
    // @param w is the weight of the provider
-   public void setWeight(double w)
+   public void setWeight(int w)
    {
       weight = w;
    }
