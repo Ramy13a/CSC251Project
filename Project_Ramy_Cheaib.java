@@ -1,9 +1,12 @@
 import java.util.Scanner;
-
+import java.io.*;
 public class Project_Ramy_Cheaib 
 {   
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
+      // open the file 
+      File file = new File("PolicyInformation.txt");
+   
       //declare variables
       String policyNumber,
              providerName,
@@ -14,39 +17,38 @@ public class Project_Ramy_Cheaib
       
       double height,
              weight;
-      Scanner keyboard = new Scanner(System.in);
+      Scanner inputFile = new Scanner(file); // create scanner with file object
    
       //getting the user's input  
       System.out.print("Please enter the Policy Number: ");
-      policyNumber = keyboard.nextLine();
+      System.out.println(inputFile.nextLine());
             
       System.out.print("Please enter the Provider Name: ");
-      providerName = keyboard.nextLine();
-      
+      System.out.println(inputFile.nextLine());
+          
       System.out.print("Please enter the Policyholder's First Name: ");
-      firstName = keyboard.nextLine();
+      System.out.println(inputFile.nextLine());
       
       System.out.print("Please enter the Policyholder's Last Name: ");
-      lastName = keyboard.nextLine();
+      System.out.println(inputFile.nextLine());
       
       System.out.print("Please enter the Policyholder's Age: ");
-      age = keyboard.nextInt();
-      keyboard.nextLine();
+      System.out.println(inputFile.nextLine());
       
       System.out.print("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
-      smokingStatus = keyboard.nextLine();
+      System.out.println(inputFile.nextLine());
       
       System.out.print("Please enter the Policyholder's Height (in inches): ");
-      height = keyboard.nextDouble();
+      System.out.println(inputFile.nextLine());
       
       System.out.print("Please enter the Policyholder's Weight (in pounds): ");
-      weight = keyboard.nextDouble();
+      System.out.println(inputFile.nextLine());
       
       //create a Policy object
-      Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
       
       //put a blank line before the output
       System.out.println();
+      
       
       //display information about the Policy
       System.out.println("Policy Number: " + policy.getPolicyNumber());

@@ -143,7 +143,7 @@ public class Policy
    // @param AGE_THRESHOLD is the age threshold until the price goes up
    // @param BMI_THRESHOLD is the bmi amount before the price goes up
    // @param price is the final price of the policy
-   // @return returning price which is the final price of the policy
+   // @return returning price which is the final price of the policimpo
    //Calculates the Policy's price
    public double getPrice()
    {
