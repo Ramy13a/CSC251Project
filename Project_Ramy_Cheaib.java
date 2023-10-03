@@ -5,17 +5,18 @@ public class Project_Ramy_Cheaib
    public static void main(String[] args)
    {
       //declare variables
-      String policyNumber;
-      String providerName;
-      String firstName;
-      String lastName;
+      String policyNumber,
+             providerName,
+             firstName,
+             lastName,
+             smokingStatus;
       int age;
-      String smokingStatus;
-      double height;
-      double weight;
+      
+      double height,
+             weight;
       Scanner keyboard = new Scanner(System.in);
    
-      //prompt the user to enter information about the Policy   
+      //getting the user's input  
       System.out.print("Please enter the Policy Number: ");
       policyNumber = keyboard.nextLine();
             
