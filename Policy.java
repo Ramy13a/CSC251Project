@@ -1,142 +1,156 @@
-public class Policy 
-{
-   private int policyNumber,
-               age,
-               height;
-   private String providerName,
-                  firstName,
-                  lastName,
-                  smokingStatus;
+public class Policy
+{  //fields
+   private String policyNumber;
+   private String providerName;
+   private String firstName;
+   private String lastName;
+   private int age;
+   private String smokingStatus;
+   private double height;
    private double weight;
-   
-   
-   // no-arg constructor
+
+   //constructors
    public Policy()
    {
-      policyNumber = 0;  
+      policyNumber = "";
+      providerName = "";
+      firstName = "";
+      lastName = "";
+      age = 0;
+      smokingStatus = "";
+      height = 0;
+      weight = 0;
    }
    
-   //@param policyNumber setting policy Number to another variable
-   public Policy (int p)
+   public Policy(String pNumber, String pName, String fName, String lName,int a, String sStatus, double h, double w)
    {
-      policyNumber = p;
+      policyNumber = pNumber;
+      providerName = pName;
+      firstName = fName;
+      lastName = lName;
+      age = a;
+      smokingStatus = sStatus;
+      height = h;
+      weight = w;
    }
-   //single constructor
-   //@param age is the age of the provider     
-   public void setAge(int age)
+   
+   //setters//
+
+   public void setPolicyNumber(String pNumber)
    {
-      this.age = age;
+      policyNumber = pNumber;
    }
-   public int getAge()
+   
+   public void setProviderName(String pName)
    {
-      return this.age;
-   }  
-   //single constructor      
-   //@param height is the height of the provider
-   public void setHeight(int height)
-   {
-      this.height = height;
+      providerName = pName;
    }
-   public int getHeight()
+   
+   public void setFirstName(String fName)
    {
-      return this.height;
-   }    
-   //single constructor    
-   //@param providerName is the name of the provider
-   public void setProviderName(String providerName)
-   {
-      this.providerName = providerName;
+      firstName = fName;
    }
+   
+   public void setLastName(String lName)
+   {
+      lastName = lName;
+   }
+   
+   public void setAge(int a)
+   {
+      age = a;
+   }
+   
+   public void setSmokingStatus(String sStatus)
+   {
+      smokingStatus = sStatus;
+   }
+   
+   public void setHeight(double h)
+   {
+      height = h;
+   }
+   
+   public void setWeight(double w)
+   {
+      weight = w;
+   }
+
+   
+   //getters//
+   
+   public String getPolicyNumber()
+   {
+      return policyNumber;
+   }
+   
    public String getProviderName()
    {
       return providerName;
-   }  
-   //single constructor     
-   //@param firstName is the first name of the provider
-   public void setFirstName(String firstName)
-   {
-      this.firstName = firstName;
    }
+   
    public String getFirstName()
    {
-      return this.firstName;
-   }  
-   //single constructor      
-   //@param lastName is the last name of the provider
-   public void setLastName(String lastName)
-   {
-      this.lastName = lastName;
+      return firstName;
    }
+   
    public String getLastName()
    {
-      return this.lastName;
-   }  
-   //single constructor      
-   //@param smokingStatus is the status the smoker chooses he's in
-   public void setSmokingStatus(String smokingStatus)
-   {
-      this.smokingStatus = smokingStatus;
+      return lastName;
    }
+   
+   public int getAge()
+   {
+      return age;
+   }
+   
    public String getSmokingStatus()
    {
-      return this.smokingStatus;
-   }  
-   //single constructor     
-   //@param weight is the weight of the provider
-   public void setWeight(double weight)
-   {
-      this.weight = weight;
+      return smokingStatus;
    }
+   
+   public double getHeight()
+   {
+      return height;
+   }
+   
    public double getWeight()
    {
-      return this.weight;
-   } //two constructors      
-  //@param BMI is the formula to measure BMI 
+      return weight;
+   }
+   
+      
+   //Calculates the Policyholder's BMI
    public double getBMI()
    {
-      double w = getWeight();
-      int h = getHeight();
-      final double BMI = ( w * 703 ) / ( h*h); 
-      return BMI;
+      final double CONVFACTOR = 703;
+      
+      return (weight * CONVFACTOR) / (height * height);
    }
-   //four constructors
-   //@param getInsurancePrice is the price of insurance as a total
-   public double getInsurancePrice()
+   
+   //Calculates the Policy's price
+   public double getPrice()
    {
-      double totalPrice = 0;
-      final int baseFee = 600;
-      int a = getAge();
-      String s = getSmokingStatus();
-      double bmi = getBMI();
-      double additional = 0;
-      if(a > 50) // if statement if they're older than 50
-      {
-         totalPrice = baseFee + 75;
-      }
-      else
-      {
-         totalPrice = baseFee;
-      }
-      if(s == "smoker" ) // if statement if they're a smoker 
-      {
-         totalPrice = baseFee + 100;
-      }
-      else     
-       {
-         totalPrice = baseFee;
-      }
-     
-      if(bmi > 35) // if statement if their bmi is above 35
-      {
-         additional = (bmi - 35) * 20;
-         totalPrice = additional + baseFee;
-      }
-      else
-      {
-         totalPrice = baseFee;
-      }
-      return totalPrice;
+      final double BASE_PRICE = 600;
+      final double ADDITIONAL_FEE_AGE = 75;
+      final double ADDITIONAL_FEE_SMOKING = 100;
+      final double ADDITIONAL_FEE_PER_BMI = 20;
+      
+      final int AGE_THRESHOLD = 50;
+      final int BMI_THRESHOLD = 35;
+      
+      double price = BASE_PRICE;
+      
+      if(age > AGE_THRESHOLD) //over 50 years
+         price += ADDITIONAL_FEE_AGE; //75
+         
+      if(smokingStatus.equalsIgnoreCase("smoker")) 
+         price += ADDITIONAL_FEE_SMOKING; //100
+            
+      //call the getBMI method
+      if(getBMI() > BMI_THRESHOLD) //BMI over 35
+         price += ((getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI); //additional BMI fee - 20
+         
+      return price;
    }
-
-
 }
